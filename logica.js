@@ -2,11 +2,11 @@ let playerText = document.getElementById('playerText')
 let restartBtn = document.getElementById('restartBtn')
 let boxes = Array.from(document.getElementsByClassName('casilla'))
 
-let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks')
+let ganador= getComputedStyle(document.body).getPropertyValue('--winning-blocks')
 
-const O_TEXT = "O"
-const X_TEXT = "X"
-let currentPlayer = X_TEXT
+const jugador_0= "O"
+const jugador_X = "X"
+let jugadorActual = jugador_X
 let spaces = Array(9).fill(null)
 
 const startGame = () => {
@@ -17,18 +17,18 @@ function boxClicked(e) {
     const id = e.target.id
 
     if(!spaces[id]){
-        spaces[id] = currentPlayer
-        e.target.innerText = currentPlayer
+        spaces[id] = jugadorActual
+        e.target.innerText = jugadorActual
 
         if(playerHasWon() !==false){
-            playerText.innerHTML = `${currentPlayer} has won!`
+            playerText.innerHTML = `${jugadorActual} gano la partida!`
             let winning_blocks = playerHasWon()
 
             winning_blocks.map( casilla => boxes[casilla].style.backgroundColor=winnerIndicator)
             return
         }
 
-        currentPlayer = currentPlayer == X_TEXT ? O_TEXT : X_TEXT
+        jugadorActual = jugadorActual == jugador_X ? jugador_0: jugador_X
     }
 }
 
@@ -64,9 +64,9 @@ function restart() {
         casilla.style.backgroundColor=''
     })
 
-    playerText.innerHTML = 'Tic Tac Toe'
+    playerText.innerHTML = 'TA-Te-TI'
 
-    currentPlayer = X_TEXT
+    jugadorActual = jugador_X
 }
 
 startGame()
