@@ -79,3 +79,7 @@ button:hover {
     cursor: pointer;
     transform: translateY(-3px);
 }
+
+.deshabilitado {
+    pointer-events: none;
+  }
